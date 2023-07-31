@@ -18,3 +18,16 @@ create table my_table(
 3. 提高数据库的性能，作为索引使用可以加快查询和排序速度。
 
 插入数据时，无需指定自增列的数值，其会自动增加。  
+
+## 表处理
+### mysql-connector
+hdfs或csv文件要写入MySQL表中时，可以使用mysql-connector库函数进行处理。  
+```python
+import mysql.connector
+db = mysql.connector.connect(user='', password='', host='', port='', database='')
+cursor = db.cursor()
+query = f"insert into xxx"
+cursor.executemany(query, values)
+db.commit()
+db.close()
+```
